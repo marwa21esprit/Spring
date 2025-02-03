@@ -3,6 +3,8 @@ package com.example.demo.entities;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
+
 @Entity
 @Table( name = "Client")
 public class Client implements Serializable {
@@ -15,4 +17,6 @@ public class Client implements Serializable {
     private Date datePremiereVisite;
     // @Transient attribut non persisté
 // Constructeur et accesseurs (getters) et mutateurs (setters)
+    @OneToMany(mappedBy="client")
+    private Set<Commande> commandes;
 }

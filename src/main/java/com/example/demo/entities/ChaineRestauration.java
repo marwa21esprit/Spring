@@ -3,6 +3,7 @@ package com.example.demo.entities;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Set;
 
 
 @Entity
@@ -15,4 +16,7 @@ public class ChaineRestauration implements Serializable {
     private String libelle;
     @Temporal(TemporalType.DATE)
     private LocalDate dateCreation;
+
+    @OneToMany(mappedBy="chaineRestauration")
+    private Set<Restaurant> restaurants;
 }
