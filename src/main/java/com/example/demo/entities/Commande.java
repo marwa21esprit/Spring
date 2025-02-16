@@ -1,26 +1,36 @@
 package com.example.demo.entities;
 
 import jakarta.persistence.*;
-import java.io.Serializable;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+
 import java.time.LocalDate;
 
 @Entity
-@Table( name = "Commande")
-public class Commande implements Serializable {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name="idCommande")
-        private Long idCommande; // Clé primaire
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
+@Table(name = "Commande")
+public class Commande {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idCommande")
+     Long idcommande;
+    @Temporal(TemporalType.DATE)
+     LocalDate dateCommande;
+     Integer pourcentageRemise;
+     Float totalRemise;
+     Float totalCommande;
+     Long note;
 
-        @Temporal(TemporalType.DATE)
-        private LocalDate dateCommande;
-        private Integer pourcentageRemise;
-        private Float totalRemise;
-        private Float totalCommande;
-        private Long note;
-// Constructeur et accesseurs (getters) et mutateurs (setters)
-        @ManyToOne
-        Client client;
-        @ManyToOne
-        Menu menu;
+    @ManyToOne
+    Client client;
+
+    @ManyToOne
+    Menu menu;
 }

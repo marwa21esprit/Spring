@@ -1,22 +1,30 @@
 package com.example.demo.entities;
-
 import jakarta.persistence.*;
-import java.io.Serializable;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+
 import java.time.LocalDate;
 import java.util.Set;
 
-
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
 @Table( name = "ChaineRestauration")
-public class ChaineRestauration implements Serializable {
+public class ChaineRestauration {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column(name="idChaineRestoration")
-    private Long idChaineRestoration; // Clé primaire
-    private String libelle;
+    @Column(name = "idChaineRestauration")
+     Long idChaineRestauration;
+     String libelle;
     @Temporal(TemporalType.DATE)
-    private LocalDate dateCreation;
+     LocalDate localDate;
 
-    @OneToMany(mappedBy="chaineRestauration")
-    private Set<Restaurant> restaurants;
+    @OneToMany(mappedBy = "chaineRestauration",cascade = CascadeType.ALL)
+     Set<Restaurant> restaurant;
 }

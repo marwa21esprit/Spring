@@ -2,19 +2,26 @@ package com.example.demo.entities;
 
 import com.example.demo.enums.TypeComposant;
 import jakarta.persistence.*;
-import java.io.Serializable;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+
 
 @Entity
-@Table( name = "DetailComposant")
-
-public class DetailComposant implements Serializable {
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
+@Table(name = "DetailComposant")
+public class DetailComposant  {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column(name="idDetailComposant")
-    private Long idDetailComposant;
-    private Float imc;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
+     Long idDetailComposant;
+     Integer imc;
     @Enumerated(EnumType.STRING)
-    private TypeComposant typeComposant;
-// Constructeur et accesseurs (getters) et mutateurs (setters)
-
+    TypeComposant typeComposant;
 }

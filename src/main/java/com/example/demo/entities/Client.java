@@ -1,22 +1,41 @@
 package com.example.demo.entities;
-
+import com.example.demo.entities.Commande;
 import jakarta.persistence.*;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.Serializable;
+import java.util.List;
 import java.util.Date;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder // fi 3oudh ma naamel new Client() n7ott Client.builder().idClient(1).identifiant("1").build();
+@Slf4j // Logger
 @Table( name = "Client")
 public class Client implements Serializable {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name="idClient")
-    private Long idClient; // Clé primaire
-    private String identifiant;
+    Long idClient; // Clé primaire
+    String identifiant;
     @Temporal(TemporalType.DATE)
-    private Date datePremiereVisite;
-    // @Transient attribut non persisté
-// Constructeur et accesseurs (getters) et mutateurs (setters)
-    @OneToMany(mappedBy="client")
-    private Set<Commande> commandes;
+    Date datePremiereVisite;
+
+    @OneToMany(mappedBy = "client")
+    Set<Commande> commandes;
+
+
+
+
+
 }

@@ -1,21 +1,30 @@
 package com.example.demo.entities;
+
 import jakarta.persistence.*;
-import java.io.Serializable;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @Entity
-@Table( name = "Composant")
-
-public class Composant implements Serializable {
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
+@Table(name = "Composant")
+public class Composant {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column(name="idComposant")
-    private Long idComposant;
-    private String nomComposant;
-    private Float prix;
-// Constructeur et accesseurs (getters) et mutateurs (setters)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
+     Long idComposant;
+     String nomComposant;
+     Float prix;
+
     @ManyToOne
     Menu menu;
 
     @OneToOne
-    private DetailComposant detailcomposant;
+     DetailComposant detailComposant;
 }

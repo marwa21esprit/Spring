@@ -1,28 +1,41 @@
 package com.example.demo.entities;
+
 import com.example.demo.enums.TypeMenu;
 import jakarta.persistence.*;
-import java.io.Serializable;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+
 import java.util.Set;
 
 @Entity
-@Table( name = "Menu")
-
-public class Menu implements Serializable {
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
+@Table(name = "Menu")
+public class Menu {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column(name="idMenu")
-    private Long idMenu;
-    private String libelleMenu;
-    @Enumerated(EnumType.STRING)
-    private TypeMenu typeMenu;
-    private Float prixTotal;
-// Constructeur et accesseurs (getters) et mutateurs (setters)
-    @OneToMany(mappedBy="menu")
-    private Set<Commande> commandes;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idMenu")
+     Long idMenu;
+     String libelleMenu;
 
-    @OneToMany(mappedBy="menu")
-    private Set<Composant> composants;
+    @Enumerated(EnumType.STRING) //make all enum values string
+    TypeMenu typeMenu;
 
-    @ManyToMany(mappedBy="menus")
-    private Set<ChefCuisinier> chefCuisiniers;
+     Float prixTotal;
+
+    @OneToMany(mappedBy = "menu")
+     Set<Commande> commandes;
+
+    @OneToMany(mappedBy = "menu")
+     Set<Composant> composants;
+
+    @ManyToMany(mappedBy = "menus")
+     Set<ChefCuisinier> chefsCuisiniers;
+
 }

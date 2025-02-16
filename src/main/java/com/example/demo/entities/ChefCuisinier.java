@@ -1,22 +1,31 @@
 package com.example.demo.entities;
 import com.example.demo.enums.TypeChef;
 import jakarta.persistence.*;
-import java.io.Serializable;
-import java.util.Set;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+
+import java.util.List;
 
 @Entity
-@Table( name = "ChefCuisinier")
-
-public class ChefCuisinier implements Serializable {
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
+@Table(name = "ChefCuisinier")
+public class ChefCuisinier {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column(name="idChefCuisinier")
-    private Long idChefCuisinier;
-    private String nom;
-    private String prenom;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
+     Long idChefCuisinier;
+     String nom;
+     String prenom;
     @Enumerated(EnumType.STRING)
-    private TypeChef typeChef;
-// Constructeur et accesseurs (getters) et mutateurs (setters)
+    TypeChef typeChef;
+
     @ManyToMany
-    private Set<Menu> menus;
+     List<Menu> menus;
 }
