@@ -4,10 +4,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.entities.Restaurant;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
-
+@Repository
 public interface RestaurantRepo extends JpaRepository<Restaurant, Long>{
 
     @Query("SELECT r FROM Restaurant r WHERE r.nbPlacesMax > :capacite AND r.chaineRestauration.dateCreation < :date")

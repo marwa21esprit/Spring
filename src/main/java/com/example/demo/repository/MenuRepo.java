@@ -4,10 +4,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.entities.Menu;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
+@Repository
 public interface MenuRepo extends JpaRepository<Menu, Long>{
     @Query("SELECT m FROM Menu m JOIN m.composants c WHERE m.typeMenu = :typeMenu GROUP BY m HAVING SUM(c.prix) > :amount")
     List<Menu> findByTypeMenuAndTotalPriceGreaterThan(@Param("typeMenu") TypeMenu typeMenu, @Param("amount") double amount);
