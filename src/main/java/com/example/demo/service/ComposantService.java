@@ -12,33 +12,28 @@ public class ComposantService implements IComposantService {
     ComposantRepo composantRepository;
 
     @Override
-    public List<Composant> retrieveAllComposants() {
+    public Composant save(Composant composant) {
+        return composantRepository.save(composant);
+    }
+
+    @Override
+    public Composant update(Composant composant) {
+        return composantRepository.save(composant);
+    }
+
+    @Override
+    public void delete(Long id) {
+        composantRepository.deleteById(id);
+    }
+
+    @Override
+    public Composant findById(Long id) {
+        return composantRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Composant> findAll() {
         return composantRepository.findAll();
-    }
 
-    @Override
-    public Composant addComposant(Composant e) {
-        composantRepository.save(e);
-        return e;
-    }
-
-    @Override
-    public Composant updateComposant(Composant e) {
-        return composantRepository.save(e);
-    }
-
-    @Override
-    public Composant retrieveComposant(Long idComposant) {
-        return composantRepository.findById(idComposant).get();
-    }
-
-    @Override
-    public void removeComposant(Long idComposant) {
-        composantRepository.deleteById(idComposant);
-    }
-
-    @Override
-    public List<Composant> addComposants(List<Composant> composants) {
-        return null;
     }
 }

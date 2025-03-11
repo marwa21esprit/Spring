@@ -9,36 +9,30 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class MenuService implements IMenuService {
-    private MenuRepo menuRepo;
+    private MenuRepo menuRepository;
 
     @Override
-    public List<Menu> retrieveAllMenus() {
-        return menuRepo.findAll();
+    public Menu save(Menu menu) {
+        return menuRepository.save(menu);
     }
 
     @Override
-    public Menu addMenu(Menu e) {
-        menuRepo.save(e);
-        return e;
+    public Menu update(Menu menu) {
+        return menuRepository.save(menu);
     }
 
     @Override
-    public Menu updateMenu(Menu e) {
-        return menuRepo.save(e);
+    public void delete(Long id) {
+        menuRepository.deleteById(id);
     }
 
     @Override
-    public Menu retrieveMenu(Long idMenu) {
-        return menuRepo.findById(idMenu).get();
+    public Menu findById(Long id) {
+        return menuRepository.findById(id).orElse(null);
     }
 
     @Override
-    public void removeMenu(Long idMenu) {
-        menuRepo.deleteById(idMenu);
-    }
-
-    @Override
-    public List<Menu> addMenus(List<Menu> menus) {
-        return menuRepo.saveAll(menus);
+    public List<Menu> findAll() {
+        return menuRepository.findAll();
     }
 }

@@ -4,10 +4,9 @@ import com.example.demo.entities.ChefCuisinier;
 
 import java.util.List;
 public interface IChefCuisinerService  {
-    List<ChefCuisinier> retrieveAllChefsCuisinier();
-    ChefCuisinier addChefCuisinier(ChefCuisinier e);
-    ChefCuisinier updateChefCuisinier(ChefCuisinier e);
-    ChefCuisinier retrieveChefCuisinier(Long idChefCuisinier);
-    void removeChefCuisinier(Long idChefCuisinier);
-    List<ChefCuisinier> addChefsCuisinier (List<ChefCuisinier> ChefsCuisinier);
+    ChefCuisinier save(ChefCuisinier chefCuisinier);
+    ChefCuisinier update(ChefCuisinier chefCuisinier);
+    void delete(Long id);
+    ChefCuisinier findById(Long id);
+    List<ChefCuisinier> findAll();
 }

@@ -5,10 +5,9 @@ import com.example.demo.entities.Composant;
 import java.util.List;
 
 public interface IComposantService {
-    List<Composant> retrieveAllComposants();
-    Composant addComposant(Composant e );
-    Composant updateComposant(Composant e);
-    Composant retrieveComposant(Long idComposant);
-    void removeComposant(Long idComposant);
-    List<Composant> addComposants(List<Composant> composants);
+    Composant save(Composant composant);
+    Composant update(Composant composant);
+    void delete(Long id);
+    Composant findById(Long id);
+    List<Composant> findAll();
 }

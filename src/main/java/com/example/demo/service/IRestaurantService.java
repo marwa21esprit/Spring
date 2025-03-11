@@ -5,10 +5,9 @@ import com.example.demo.entities.Restaurant;
 import java.util.List;
 
 public interface IRestaurantService {
-    List<Restaurant> retrieveAllRestaurants();
-    Restaurant addRestaurant(Restaurant e);
-    Restaurant updateRestaurant(Restaurant e);
-    Restaurant retrieveRestaurant(Long idRestaurant);
-    void removeRestaurant(Long idRestaurant);
-    List<Restaurant> addRestaurants (List<Restaurant> Restaurants);
+    Restaurant save(Restaurant restaurant);
+    Restaurant update(Restaurant restaurant);
+    void delete(Long id);
+    Restaurant findById(Long id);
+    List<Restaurant> findAll();
 }

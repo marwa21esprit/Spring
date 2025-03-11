@@ -11,34 +11,29 @@ import java.util.List;
 public class ClientService implements IClientService {
     ClientRepo clientRepository;
 
+
     @Override
-    public List<Client> retrieveAllClients() {
+    public Client save(Client client) {
+        return clientRepository.save(client);
+    }
+
+    @Override
+    public Client update(Client client) {
+        return clientRepository.save(client);
+    }
+
+    @Override
+    public void delete(Long id) {
+        clientRepository.deleteById(id);
+    }
+
+    @Override
+    public Client findById(Long id) {
+        return clientRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Client> findAll() {
         return clientRepository.findAll();
-    }
-
-    @Override
-    public Client addClient(Client e) {
-        clientRepository.save(e);
-        return e;
-    }
-
-    @Override
-    public Client updateClient(Client e) {
-        return clientRepository.save(e);
-    }
-
-    @Override
-    public Client retrieveClient(Long idClient) {
-        return clientRepository.findById(idClient).get();
-    }
-
-    @Override
-    public void removeClient(Long idClient) {
-        clientRepository.deleteById(idClient);
-    }
-
-    @Override
-    public List<Client> addClients(List<Client> clients) {
-       return clientRepository.saveAll(clients);
     }
 }

@@ -8,36 +8,30 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class DetailComposantService implements IDetailComposantService{
-    DetailComposantRepo detailComposantRepository;
+    private DetailComposantRepo detailComposantRepository;
 
     @Override
-    public List<DetailComposant> retrieveAllDetailComposants() {
+    public DetailComposant save(DetailComposant detailComposant) {
+        return detailComposantRepository.save(detailComposant);
+    }
+
+    @Override
+    public DetailComposant update(DetailComposant detailComposant) {
+        return detailComposantRepository.save(detailComposant);
+    }
+
+    @Override
+    public void delete(Long id) {
+        detailComposantRepository.deleteById(id);
+    }
+
+    @Override
+    public DetailComposant findById(Long id) {
+        return detailComposantRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<DetailComposant> findAll() {
         return detailComposantRepository.findAll();
-    }
-
-    @Override
-    public DetailComposant addDetailComposant(DetailComposant e) {
-        detailComposantRepository.save(e);
-        return e;
-    }
-
-    @Override
-    public DetailComposant updateDetailComposant(DetailComposant e) {
-        return detailComposantRepository.save(e);
-    }
-
-    @Override
-    public DetailComposant retrieveDetailComposant(Long idDetailComposant) {
-        return detailComposantRepository.findById(idDetailComposant).get();
-    }
-
-    @Override
-    public void removeDetailComposant(Long idDetailComposant) {
-        detailComposantRepository.deleteById(idDetailComposant);
-    }
-
-    @Override
-    public List<DetailComposant> addDetailComposants(List<DetailComposant> detailComposants) {
-       return detailComposantRepository.saveAll(detailComposants);
     }
 }

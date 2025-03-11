@@ -10,35 +10,33 @@ import java.util.List;
 @AllArgsConstructor
 public class CommandeService implements ICommandeService{
     CommandeRepo commandeRepository;
+    @Override
+    public Commande save(Commande commande) {
+        return commandeRepository.save(commande);
+    }
 
     @Override
-    public List<Commande> retrieveAllCommandes() {
+    public Commande update(Commande commande) {
+        return commandeRepository.save(commande);
+    }
+
+    @Override
+    public void delete(Long id) {
+        commandeRepository.deleteById(id);
+    }
+
+    @Override
+    public Commande findById(Long id) {
+        return commandeRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Commande> findAll() {
         return commandeRepository.findAll();
     }
 
-    @Override
-    public Commande addCommande(Commande e) {
-        commandeRepository.save(e);
-        return e;
-    }
 
-    @Override
-    public Commande updateCommande(Commande e) {
-        return commandeRepository.save(e);
-    }
-
-    @Override
-    public Commande retrieveCommande(Long idCommande) {
-        return commandeRepository.findById(idCommande).get();
-    }
-
-    @Override
-    public void removeCommande(Long idCommande) {
-        commandeRepository.deleteById(idCommande);
-    }
-
-    @Override
-    public List<Commande> addCommandes(List<Commande> commandes) {
-        return commandeRepository.saveAll(commandes);
+    public List<Commande> findByClientId(Long id) {
+        return commandeRepository.findByClientIdClient(id);
     }
 }

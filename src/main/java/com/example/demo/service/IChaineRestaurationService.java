@@ -6,9 +6,15 @@ import java.util.List;
 
 public interface IChaineRestaurationService {
     List<ChaineRestauration> retrieveAllChainesRestauration();
-    ChaineRestauration addChaineRestauration(ChaineRestauration e);
-    ChaineRestauration updateChaineRestauration(ChaineRestauration e);
+    ChaineRestauration save(ChaineRestauration e);
+    ChaineRestauration update (ChaineRestauration e);
     ChaineRestauration retrieveChaineRestauration(Long idChaineRestauration);
-    void removeChaineRestauration(Long idChaineRestauration);
+    void delete(Long idChaineRestauration);
     List<ChaineRestauration> addChainesRestauration(List<ChaineRestauration> chainesRestauration);
+
+    ChaineRestauration findById(Long id);
+
+    List<ChaineRestauration> findAll();
+
+
 }

@@ -12,34 +12,28 @@ public class RestaurantService implements IRestaurantService {
     RestaurantRepo restaurantRepository;
 
     @Override
-    public List<Restaurant> retrieveAllRestaurants() {
+    public Restaurant save(Restaurant restaurant) {
+        return restaurantRepository.save(restaurant);
+    }
+
+    @Override
+    public Restaurant update(Restaurant restaurant) {
+        return restaurantRepository.save(restaurant);
+    }
+
+    @Override
+    public void delete(Long id) {
+        restaurantRepository.deleteById(id);
+    }
+
+    @Override
+    public Restaurant findById(Long id) {
+        return restaurantRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Restaurant> findAll() {
         return restaurantRepository.findAll();
-    }
-
-    @Override
-    public Restaurant addRestaurant(Restaurant e) {
-        restaurantRepository.save(e);
-        return e;
-    }
-
-    @Override
-    public Restaurant updateRestaurant(Restaurant e) {
-        return restaurantRepository.save(e);
-    }
-
-    @Override
-    public Restaurant retrieveRestaurant(Long idRestaurant) {
-        return restaurantRepository.findById(idRestaurant).get();
-    }
-
-    @Override
-    public void removeRestaurant(Long idRestaurant) {
-        restaurantRepository.deleteById(idRestaurant);
-    }
-
-    @Override
-    public List<Restaurant> addRestaurants(List<Restaurant> restaurants) {
-       return restaurantRepository.saveAll(restaurants);
     }
 
 }

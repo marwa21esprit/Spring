@@ -19,12 +19,12 @@ public class ChaineRestaurationService implements IChaineRestaurationService {
     }
 
     @Override
-    public ChaineRestauration addChaineRestauration(ChaineRestauration e) {
+    public ChaineRestauration save(ChaineRestauration e) {
         return chaineRestaurationRepository.save(e);
     }
 
     @Override
-    public ChaineRestauration updateChaineRestauration(ChaineRestauration e) {
+    public ChaineRestauration update(ChaineRestauration e) {
         return chaineRestaurationRepository.save(e);
     }
 
@@ -34,12 +34,22 @@ public class ChaineRestaurationService implements IChaineRestaurationService {
     }
 
     @Override
-    public void removeChaineRestauration(Long idChaineRestauration) {
+    public void delete(Long idChaineRestauration) {
         chaineRestaurationRepository.deleteById(idChaineRestauration);
     }
 
     @Override
     public List<ChaineRestauration> addChainesRestauration(List<ChaineRestauration> chainesRestauration) {
         return chaineRestaurationRepository.saveAll(chainesRestauration);
+    }
+
+    @Override
+    public ChaineRestauration findById(Long id) {
+        return chaineRestaurationRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<ChaineRestauration> findAll() {
+        return chaineRestaurationRepository.findAll();
     }
 }
